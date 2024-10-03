@@ -93,6 +93,8 @@ def extract_pip_requirements(source: str) -> list[str] | None:
     r"""Check if the source in a cell is a pip install statement.
 
     >>> extract_pip_requirements("Not a pip install statement")
+    >>> extract_pip_requirements("uv pip install test")
+    ['test']
     >>> extract_pip_requirements("pip install")
     []
     >>> extract_pip_requirements("pip3 install attrs")
@@ -115,7 +117,7 @@ def extract_pip_requirements(source: str) -> list[str] | None:
     """
     # cspell:ignore mpip
     matches = re.match(
-        r"[%\!]?\s*(python3?\s+-m\s*)?pip3?\s+install\s*(-q)?(.*?)(&?>\s*/dev/null)?$",
+        r"[%\!]?\s*(python3?\s+-m\s*|uv\s+)?pip3?\s+install\s*(-q)?(.*?)(&?>\s*/dev/null)?$",
         __to_oneline(source).strip(),
     )
     if matches is None:
