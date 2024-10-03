@@ -6,6 +6,7 @@ dependencies:
   - juliaup
   - pip
   - python==3.12.*
+  - uv
   - pip:
       - -e .[dev]
 variables:

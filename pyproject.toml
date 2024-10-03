@@ -117,6 +117,7 @@ PYTHONHASHSEED = "0"
 graphviz = "*"
 juliaup = "*"
 python = "3.12.*"
+uv = "*"
 
 [tool.pixi.environments]
 default = {features = [

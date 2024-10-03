@@ -28,7 +28,7 @@ if sys.version_info >= (3, 10):
 else:
     from typing_extensions import ParamSpec
 
-__EXPECTED_PIP_INSTALL_LINE = "%pip install -q"
+__EXPECTED_PIP_INSTALL_LINE = "!uv pip install -q"
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -155,7 +155,7 @@ def _check_pip_requirements(filename: str, requirements: list[str]) -> None:
             msg_unformatted = f"""
             Get the currently installed versions with:
 
-                python3 -m pip freeze | grep -iE '{"|".join(sorted(unpinned_requirements))}'
+                uv pip freeze | grep -iE '{"|".join(sorted(unpinned_requirements))}'
             """
             msg += dedent(msg_unformatted)
             raise PrecommitError(msg)
