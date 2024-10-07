@@ -32,7 +32,6 @@
     ".gitignore",
     ".pre-commit-config.yaml",
     ".prettierignore",
-    ".readthedocs.yml",
     ".vscode/*",
     "docs/conf.py",
     "pyproject.toml",

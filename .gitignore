@@ -50,7 +50,6 @@ pyvenv*/
 !.github/*.yml
 !.github/*/*.yml
 !.pre-commit-config.yaml
-!.readthedocs.yml
 !.vscode/*.json
 !codecov.yml
 !environment.yml
