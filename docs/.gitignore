@@ -1,7 +1,7 @@
 *.csv
 *.png
 *.svg
-_inventory.md
+/.quarto/
 
 002/*-tree
 002/*-graph
@@ -9,3 +9,4 @@ _inventory.md
 018/graph
 
 _static/exported_intensity_model.py
+!_quarto.yml

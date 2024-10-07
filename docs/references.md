@@ -1,14 +1,10 @@
-# Bibliography
+---
+format:
+  html:
+    code-tools: false
+nocite: "@*"
+title: Bibliography
+---
 
-:::{tip}
-
-Download this bibliography as BibTeX {download}`here </bibliography.bib>`.
-
+:::{#refs}
 :::
-
-```{bibliography} /bibliography.bib
----
-style: unsrt_et_al
-all:
----
-```

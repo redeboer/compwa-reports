@@ -1,0 +1,40 @@
+bibliography: bibliography.bib
+execute:
+  cache: true
+format:
+  html:
+    code-fold: true
+    code-tools: true
+    theme:
+      light: cosmo
+      dark: darkly
+project:
+  output-dir: _build/html
+  type: website
+toc: true
+website:
+  cookie-consent: true
+  draft-mode: visible
+  favicon: _static/favicon.ico
+  page-navigation: true
+  repo-actions:
+    - edit
+    - issue
+    - source
+  repo-subdir: docs
+  repo-url: https://github.com/ComPWA/report
+  search:
+    location: sidebar
+    type: textbox
+  navbar:
+    logo: https://raw.githubusercontent.com/ComPWA/ComPWA/04e5199/doc/images/logo.svg
+    left:
+      - file: index.md
+        text: Technical Reports
+      - file: references.md
+    tools:
+      - icon: github
+        href: https://github.com/ComPWA/report
+    title: " "
+  site-url: https://compwa.github.io/report
+  title: ComPWA Technical Reports

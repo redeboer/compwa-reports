@@ -42,37 +42,23 @@ dev = [
     "compwa-report[jupyter]",
     "compwa-report[sty]",
     "compwa-report[test]",
-    "sphinx-autobuild",
     "tox >=1.9", # for skip_install, use_develop
 ]
 doc = [
-    "Sphinx >=3",
-    "myst-nb >=0.14", # nb_ configuration prefixes
-    "sphinx-api-relink >=0.0.4",
-    "sphinx-book-theme",
-    "sphinx-codeautolink[ipython]",
-    "sphinx-comments",
-    "sphinx-copybutton",
-    "sphinx-design",
-    "sphinx-hep-pdgref",
-    "sphinx-pybtex-etal-style",
-    "sphinx-remove-toctrees",
-    "sphinx-thebe",
-    "sphinx-togglebutton",
-    "sphinxcontrib-bibtex >=2",
+    "jupyter-cache",
+    "quarto-cli",
 ]
 jupyter = [
     "jupyterlab",
     "jupyterlab-code-formatter >=3.0.0",
     "jupyterlab-git",
     "jupyterlab-lsp",
-    "jupyterlab-myst",
+    "jupyterlab-quarto",
     "python-lsp-ruff",
     "python-lsp-server[rope]",
 ]
 sty = [
     "attrs",
-    "compwa-report[types]",
     "nbformat",
     "pre-commit-uv",
     "ruff",
@@ -80,9 +66,6 @@ sty = [
 test = [
     "jupyter",
     "nbmake",
-]
-types = [
-    "sphinx-api-relink >=0.0.4",
 ]
 
 [project.readme]
@@ -125,45 +108,17 @@ default = {features = [
     "jupyter",
     "sty",
     "test",
-    "types",
 ]}
 
 [tool.pixi.feature.dev.tasks.ci]
 depends_on = ["docnb", "linkcheck", "sty"]
 
 [tool.pixi.feature.dev.tasks.doc]
-cmd = """
-sphinx-build \
-    --builder html \
-    --fail-on-warning \
-    --keep-going \
-    --show-traceback \
-    docs/ docs/_build/html
-"""
+cmd = "quarto render docs"
 env = {FORCE_COLOR = "1", PYTHONWARNINGS = "", ZFIT_DISABLE_TF_WARNINGS = "1"}
 
 [tool.pixi.feature.dev.tasks.doclive]
-cmd = """
-sphinx-autobuild \
-    --open-browser \
-    --re-ignore '.*/.ipynb_checkpoints/.*' \
-    --re-ignore '.*/__pycache__/.*' \
-    --re-ignore '.*\\.gitignore' \
-    --re-ignore 'docs/.*\\.csv' \
-    --re-ignore 'docs/.*\\.gif' \
-    --re-ignore 'docs/.*\\.gv' \
-    --re-ignore 'docs/.*\\.inv' \
-    --re-ignore 'docs/.*\\.json' \
-    --re-ignore 'docs/.*\\.pickle' \
-    --re-ignore 'docs/.*\\.png' \
-    --re-ignore 'docs/.*\\.svg' \
-    --re-ignore 'docs/.*\\.yaml' \
-    --re-ignore 'docs/.*\\.yml' \
-    --re-ignore 'docs/_build/.*' \
-    --re-ignore docs/_static/exported_intensity_model.py \
-    --watch docs \
-    docs/ docs/_build/html
-"""
+cmd = "quarto preview docs"
 env = {FORCE_COLOR = "1", PYTHONWARNINGS = "", ZFIT_DISABLE_TF_WARNINGS = "1"}
 
 [tool.pixi.feature.dev.tasks.docnb]
@@ -177,15 +132,6 @@ env = {FORCE_COLOR = "1", FORCE_EXECUTE_NB = "yes", PYTHONWARNINGS = "", TF_CPP_
 [tool.pixi.feature.dev.tasks.docnblive]
 cmd = "pixi run doclive"
 env = {EXECUTE_NB = "yes", FORCE_COLOR = "1", PYTHONWARNINGS = "", TF_CPP_MIN_LOG_LEVEL = "3", ZFIT_DISABLE_TF_WARNINGS = "1"}
-
-[tool.pixi.feature.dev.tasks.linkcheck]
-cmd = """
-sphinx-build \
-    --builder linkcheck \
-    --show-traceback \
-    docs/ docs/_build/linkcheck
-"""
-env = {FORCE_COLOR = "1"}
 
 [tool.pixi.feature.dev.tasks.nb]
 cmd = "pytest --nbmake docs"

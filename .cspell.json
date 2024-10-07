@@ -33,7 +33,6 @@
     ".pre-commit-config.yaml",
     ".prettierignore",
     ".vscode/*",
-    "docs/conf.py",
     "pyproject.toml",
     "tox.ini"
   ],
@@ -126,6 +125,7 @@
     "bbox",
     "bgcolor",
     "boldsymbol",
+    "callout",
     "cbar",
     "clim",
     "cmap",
@@ -221,6 +221,7 @@
     "nbsp",
     "ncols",
     "ndarray",
+    "nocite",
     "nonlocal",
     "nonumber",
     "nrows",
