@@ -1,7 +1,9 @@
 *.csv
+*.html
 *.png
 *.svg
 /.quarto/
+site_libs/
 
 002/*-tree
 002/*-graph
