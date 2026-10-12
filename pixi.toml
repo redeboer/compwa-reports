@@ -133,3 +133,8 @@ description = "Run all notebooks"
 [tasks.style]
 cmd = "uv run --group style --isolated --no-dev pre-commit run --all-files"
 description = "Perform all linting, formatting, and spelling checks"
+
+[project]
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+name = "compwa-report"
